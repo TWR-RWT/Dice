@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Dice Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/main.css"/>
+</head>
+<body>
+    <div class="container">
+            <div class="z1">
+                <div id="newGame">
+                    <canvas id="canvas_newGame">
+                        Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+                    </canvas>
+                    <span>&#8287 NEW GAME</span>
+                </div>
+                <canvas id="dice">
+                    Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+                </canvas>
+                <div id="rollDice">
+                    <canvas id="canvas_rollDice">
+                        Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+                    </canvas>
+                    <span>&#8287 ROLL DICE</span>
+                </div>
+                <div id="hold">
+                    <canvas id="canvas_hold">
+                        Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+                    </canvas>
+                    <span>&#8287 HOLD</span>
+                </div>
+            </div>
+            <div id="player1" class="player">
+                <div class="playerNumber darkGrey">
+                    PLAYER 1 
+                    <canvas id="player1Point1" class="point">
+                        Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+                    </canvas>
+                </div>
+                <div id="total1" class="total">
+                    43
+                </div>
+                <div id="score1" class="score">
+                    <div id="scoreText1" class="scoreText">
+                        CURRENT
+                    </div>
+                    <div id="scoreLancé1" class="scoreLancé">
+                        11
+                    </div>
+                </div>
+
+            </div>
+            <div id="player2" class="player">
+                <div class="playerNumber grey">
+                    PLAYER 2
+                    <canvas id="player1Point2" class="point">
+                        Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+                    </canvas>
+                </div>
+                <div id="total2" class="total">
+                    72
+                </div>
+                <div id="score2" class="score">
+                    <div id="scoreText2" class="scoreText">
+                        CURRENT
+                    </div>
+                    <div id="scoreLancé2" class="scoreLancé">
+                        0
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+    <script type="text/javascript" src="script/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+$base-color: rgb(235, 77, 76);
+
+.container {
+    display:flex;
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:100%;
+    width: 100%;
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:97%;
+    width: 97%;
+    background-color: rgb(155,106,63);
+}
+
+.player {
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+    flex-direction:column;
+    width: 100%;
+    height: 100%;  
+    .playerNumber {
+        font-size: 2rem;
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction:row;
+        &.grey {
+            color: rgb(177, 177, 177)
+        }
+        &.darkGrey {
+            color: rgb(113, 113, 113)
+        }  
+    }
+
+    .total {
+        display:flex;
+        justify-content: center;
+        font-size: 4rem;
+        color: rgb(231,137,157);
+    }
+
+    .score {
+        display:flex;
+        justify-content: space-around;
+        align-items:center;
+        flex-direction:column;
+        width:8rem;
+        height:6rem;
+        background-color: $base-color;
+        .scoreText {
+            display:flex;
+            justify-content: center;
+            color: rgb(0,0,0);
+            font-weight: 800;
+            font-size: 1rem;
+
+        }
+        .scoreLancé {
+            display:flex;
+            justify-content: center;
+            color: rgb(255,255,255);
+            font-weight: 800;
+            font-size: 2rem;
+        }
+    }
+}
+
+.z1{
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+    flex-direction:column;
+    position:absolute;
+    width:97%;
+    height: 97%;
+    color:rgb(0,0,0);
+    font-weight: 800;
+    font-size: 1.3rem;
+    
+}
+
+#newGame {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:row;
+}
+
+#rollDice {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:row;
+}
+#hold {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:row;
+}
+
+#player1 {
+    background-color: rgb(247,247,247);
+}
+
+#player2 {
+    background-color: rgb(255,255,255);
+}
+
+#dice{
+    box-shadow: 0px 0px 15px 7px rgba(117, 117, 117, 0.05);
+}
+
+

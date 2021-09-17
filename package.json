@@ -1,0 +1,22 @@
+{
+  "name": "entrainementdynamiservossiteswebavecjavascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TWR-RWT/A_Dice_Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TWR-RWT/A_Dice_Game/issues"
+  },
+  "homepage": "https://github.com/TWR-RWT/A_Dice_Game#readme",
+  "dependencies": {
+    "sass": "^1.39.2"
+  }
+}
