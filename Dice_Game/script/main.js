@@ -1,5 +1,16 @@
 console.log('main.js connecté');
 
+var button_rollDice= document.getElementById('rollDice')
+
+function rolling_Dice(){
+    let entier = Math.floor(Math.random() * 6) + 1;
+    console.log(entier)
+    return entier
+}
+
+button_rollDice.addEventListener('click', rolling_Dice);
+
+
 //Dice//
 const canvas = document.getElementById('dice');
 var ctx = canvas.getContext('2d');
