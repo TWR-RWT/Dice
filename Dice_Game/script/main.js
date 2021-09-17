@@ -8,35 +8,124 @@ canvas.height=100;
 ctx.fillStyle = 'white';
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
+function Dice_1() {
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/2, canvas.height/2, 5, 0, 2 * Math.PI);
+    ctx.fill();
+}
+
+function Dice_2() {
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3, canvas.height/3, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3*2, canvas.height/3*2, 5, 0, 2 * Math.PI);
+    ctx.fill();
+}
+
+function Dice_3() {
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/2, canvas.height/2, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/4, canvas.height/4, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/4*3, canvas.height/4*3, 5, 0, 2 * Math.PI);
+    ctx.fill();
+}
+
+function Dice_4() {
 ctx.beginPath();
 ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3, canvas.height/4, 5, 0, 2 * Math.PI);
+ctx.arc(canvas.width/3, canvas.height/3, 5, 0, 2 * Math.PI);
 ctx.fill();
 
 ctx.beginPath();
 ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3*2, canvas.height/4, 5, 0, 2 * Math.PI);
+ctx.arc(canvas.width/3*2, canvas.height/3, 5, 0, 2 * Math.PI);
 ctx.fill();
 
 ctx.beginPath();
 ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3, canvas.height/4*2, 5, 0, 2 * Math.PI);
+ctx.arc(canvas.width/3, canvas.height/3*2, 5, 0, 2 * Math.PI);
 ctx.fill();
 
 ctx.beginPath();
 ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3*2, canvas.height/4*2, 5, 0, 2 * Math.PI);
+ctx.arc(canvas.width/3*2, canvas.height/3*2, 5, 0, 2 * Math.PI);
 ctx.fill();
+}
 
-ctx.beginPath();
-ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3, canvas.height/4*3, 5, 0, 2 * Math.PI);
-ctx.fill();
+function Dice_5() {
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/2, canvas.height/2, 5, 0, 2 * Math.PI);
+    ctx.fill();
 
-ctx.beginPath();
-ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3*2, canvas.height/4*3, 5, 0, 2 * Math.PI);
-ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/4, canvas.height/4, 5, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/4*3, canvas.height/4, 5, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/4, canvas.height/4*3, 5, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/4*3, canvas.height/4*3, 5, 0, 2 * Math.PI);
+    ctx.fill();
+}
+
+
+function Dice_6() {
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3, canvas.height/4, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3*2, canvas.height/4, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3, canvas.height/4*2, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3*2, canvas.height/4*2, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3, canvas.height/4*3, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3*2, canvas.height/4*3, 5, 0, 2 * Math.PI);
+    ctx.fill();
+}
+Dice_6()
 
 //Points//
 const canvas2 = document.getElementsByClassName('point');
