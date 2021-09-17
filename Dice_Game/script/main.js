@@ -8,7 +8,40 @@ function rolling_Dice(){
     return entier
 }
 
-button_rollDice.addEventListener('click', rolling_Dice);
+function change_Dice(){
+    const canvas = document.getElementById('dice');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width=100;
+    canvas.height=100;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    switch(rolling_Dice()) {
+        case 1:
+            Dice_1();
+            break;
+        case 2:
+            Dice_2();
+            break;
+        case 3:
+            Dice_3();
+            break;
+        case 4:
+            Dice_4();
+            break;
+        case 5:
+            Dice_5();
+            break;
+        case 6:
+            Dice_6();
+            break;
+        default:
+            Dice_6();
+    }
+    
+}
+
+button_rollDice.addEventListener('click', change_Dice);
 
 
 //Dice//
@@ -18,6 +51,8 @@ canvas.width=100;
 canvas.height=100;
 ctx.fillStyle = 'white';
 ctx.fillRect(0,0,canvas.width,canvas.height);
+
+Dice_6()
 
 function Dice_1() {
     ctx.beginPath();
@@ -56,25 +91,25 @@ function Dice_3() {
 }
 
 function Dice_4() {
-ctx.beginPath();
-ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3, canvas.height/3, 5, 0, 2 * Math.PI);
-ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3, canvas.height/3, 5, 0, 2 * Math.PI);
+    ctx.fill();
 
-ctx.beginPath();
-ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3*2, canvas.height/3, 5, 0, 2 * Math.PI);
-ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3*2, canvas.height/3, 5, 0, 2 * Math.PI);
+    ctx.fill();
 
-ctx.beginPath();
-ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3, canvas.height/3*2, 5, 0, 2 * Math.PI);
-ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3, canvas.height/3*2, 5, 0, 2 * Math.PI);
+    ctx.fill();
 
-ctx.beginPath();
-ctx.fillStyle="#FF4422";
-ctx.arc(canvas.width/3*2, canvas.height/3*2, 5, 0, 2 * Math.PI);
-ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle="#FF4422";
+    ctx.arc(canvas.width/3*2, canvas.height/3*2, 5, 0, 2 * Math.PI);
+    ctx.fill();
 }
 
 function Dice_5() {
@@ -136,7 +171,7 @@ function Dice_6() {
     ctx.arc(canvas.width/3*2, canvas.height/4*3, 5, 0, 2 * Math.PI);
     ctx.fill();
 }
-Dice_6()
+
 
 //Points//
 const canvas2 = document.getElementsByClassName('point');
