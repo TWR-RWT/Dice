@@ -1,67 +1,99 @@
 console.log('main.js connecté');
 
-var button_rollDice= document.getElementById('rollDice')
+//class pour créer des joueurs
+class player {
+    constructor(score, round, active, id_player_score, id_player_round) {
+        this.score = score; //score total
+        this.round = round; //score du tour
+        this.active = active; //joueur actif ou non
+        this.change_round = function() { //Lancer les dès
+            this.round=change_Dice();
+            document.getElementById(id_player_round).innerText = this.round;
+        }
 
-function rolling_Dice(){
-    let entier = Math.floor(Math.random() * 6) + 1;
-    console.log(entier)
-    return entier
+        this.hold = function () { //Intégrer le lancé de dès au score total
+            this.score+=this.round;
+            document.getElementById(id_player_score).innerText = this.score;
+        }
+    }
 }
 
+//Création des joueurs !
+let player1 = new player (0, 5, true, 'total1', 'scoreLancé2')
+let player2 = new player (0, 5, true, 'total2', 'scoreLancé2')
+/*
+console.log('score:' + player1.score)
+console.log('round: ' + player1.round)
+player1.change_round()
+console.log('round: ' + player1.round)
+player1.hold()
+console.log('score:' + player1.score)
+*/
+
+//bouton pour lancer les dès
+let button_rollDice= document.getElementById('rollDice'); 
+button_rollDice.addEventListener('click', change_Dice);
+
+
 function change_Dice(){
-    const canvas = document.getElementById('dice');
-    var ctx = canvas.getContext('2d');
+    //on créée et nettoie le canvas
+    let canvas = document.getElementById('dice');
+    let ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.width=100;
     canvas.height=100;
     ctx.fillStyle = 'white';
     ctx.fillRect(0,0,canvas.width,canvas.height);
-    switch(rolling_Dice()) {
+    //on tire un entier de 1 à 6
+    let dice = Math.floor(Math.random() * 6) + 1;
+    switch(dice) {
         case 1:
-            Dice_1();
+            Dice_1(ctx, canvas);
             break;
         case 2:
-            Dice_2();
+            Dice_2(ctx, canvas);
             break;
         case 3:
-            Dice_3();
+            Dice_3(ctx, canvas);
             break;
         case 4:
-            Dice_4();
+            Dice_4(ctx, canvas);
             break;
         case 5:
-            Dice_5();
+            Dice_5(ctx, canvas);
             break;
         case 6:
-            Dice_6();
+            Dice_6(ctx, canvas);
             break;
         default:
-            Dice_6();
+            Dice_6(ctx, canvas);
     }
-    
+    console.log(dice);
+    return dice;   
 }
 
-button_rollDice.addEventListener('click', change_Dice);
+
 
 
 //Dice//
+/*
 const canvas = document.getElementById('dice');
 var ctx = canvas.getContext('2d');
 canvas.width=100;
 canvas.height=100;
 ctx.fillStyle = 'white';
 ctx.fillRect(0,0,canvas.width,canvas.height);
+*/
+//Dice_6()
 
-Dice_6()
-
-function Dice_1() {
+function Dice_1(ctx, canvas) {
     ctx.beginPath();
     ctx.fillStyle="#FF4422";
     ctx.arc(canvas.width/2, canvas.height/2, 5, 0, 2 * Math.PI);
     ctx.fill();
 }
 
-function Dice_2() {
+function Dice_2(ctx, canvas) {
     ctx.beginPath();
     ctx.fillStyle="#FF4422";
     ctx.arc(canvas.width/3, canvas.height/3, 5, 0, 2 * Math.PI);
@@ -73,7 +105,7 @@ function Dice_2() {
     ctx.fill();
 }
 
-function Dice_3() {
+function Dice_3(ctx, canvas) {
     ctx.beginPath();
     ctx.fillStyle="#FF4422";
     ctx.arc(canvas.width/2, canvas.height/2, 5, 0, 2 * Math.PI);
@@ -90,7 +122,7 @@ function Dice_3() {
     ctx.fill();
 }
 
-function Dice_4() {
+function Dice_4(ctx, canvas) {
     ctx.beginPath();
     ctx.fillStyle="#FF4422";
     ctx.arc(canvas.width/3, canvas.height/3, 5, 0, 2 * Math.PI);
@@ -112,7 +144,7 @@ function Dice_4() {
     ctx.fill();
 }
 
-function Dice_5() {
+function Dice_5(ctx, canvas) {
     ctx.beginPath();
     ctx.fillStyle="#FF4422";
     ctx.arc(canvas.width/2, canvas.height/2, 5, 0, 2 * Math.PI);
@@ -140,7 +172,7 @@ function Dice_5() {
 }
 
 
-function Dice_6() {
+function Dice_6(ctx, canvas) {
     ctx.beginPath();
     ctx.fillStyle="#FF4422";
     ctx.arc(canvas.width/3, canvas.height/4, 5, 0, 2 * Math.PI);
@@ -171,6 +203,20 @@ function Dice_6() {
     ctx.arc(canvas.width/3*2, canvas.height/4*3, 5, 0, 2 * Math.PI);
     ctx.fill();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Points//
@@ -258,3 +304,11 @@ const canvas_hold = document.getElementById('canvas_hold');
     contex_hold.lineTo(canvas_hold.width/2+3,canvas_hold.height/2-3);
     contex_hold.stroke();
     contex_hold.closePath();
+
+
+console.log('score:' + player1.score)
+console.log('round: ' + player1.round)
+player1.change_round()
+console.log('round: ' + player1.round)
+player1.hold()
+console.log('score:' + player1.score)
