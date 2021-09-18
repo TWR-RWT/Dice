@@ -7,7 +7,12 @@ class player {
         this.round = round; //score du tour
         this.active = active; //joueur actif ou non
         this.change_round = function() { //Lancer les dès
-            this.round=change_Dice();
+            dice=change_Dice();
+            if (dice != 1) {
+                this.round+=dice;
+            } else {
+                this.round=0;
+            }
             document.getElementById(id_player_round).innerText = this.round;
         }
 
@@ -18,9 +23,48 @@ class player {
     }
 }
 
+class game {
+    constructor(joueur1, joueur2) {
+        this.firstPlayer = joueur1;
+        //console.log(this.firstPlayer)
+        //console.log(this.firstPlayer.active)
+        this.secondPlayer = joueur2;
+
+    }
+    init() {
+        this.firstPlayer = new player (0, 0, true, 'total1', 'scoreLancé1')
+        this.secondPlayer = new player (0, 0, false, 'total2', 'scoreLancé2')
+    }
+
+    playerRollingDice() {
+        if (this.firstPlayer.active) {
+            this.firstPlayer.change_round();
+        } else if (this.secondPlayer.active) {
+            this.secondPlayer.change_round();
+        } else {
+            alert('Error: Pas de joueur actif !');
+        }
+    }
+
+    playerHolding(){
+        if (this.firstPlayer.active) {
+            this.firstPlayer.hold();
+        } else if (this.secondPlayer.active) {
+            this.secondPlayer.hold();
+        } else {
+            alert('Error: Pas de joueur actif !');
+        }
+    }
+}
+
 //Création des joueurs !
-let player1 = new player (0, 5, true, 'total1', 'scoreLancé2')
-let player2 = new player (0, 5, true, 'total2', 'scoreLancé2')
+let player1 = new player (0, 5, true, 'total1', 'scoreLancé1')
+let player2 = new player (0, 5, false, 'total2', 'scoreLancé2')
+let currentGame = new game (player1, player2)
+//console.log(currentGame)
+//console.log(currentGame.firstPlayer)
+//console.log(currentGame.firstPlayer.active)
+
 /*
 console.log('score:' + player1.score)
 console.log('round: ' + player1.round)
@@ -32,7 +76,10 @@ console.log('score:' + player1.score)
 
 //bouton pour lancer les dès
 let button_rollDice= document.getElementById('rollDice'); 
-button_rollDice.addEventListener('click', change_Dice);
+button_rollDice.addEventListener('click', function () {currentGame.playerRollingDice()});
+
+let button_hold= document.getElementById('hold'); 
+button_hold.addEventListener('click', function () {currentGame.playerHolding()});
 
 
 function change_Dice(){
@@ -68,7 +115,7 @@ function change_Dice(){
         default:
             Dice_6(ctx, canvas);
     }
-    console.log(dice);
+    //console.log(dice);
     return dice;   
 }
 
@@ -222,7 +269,7 @@ function Dice_6(ctx, canvas) {
 //Points//
 const canvas2 = document.getElementsByClassName('point');
 for (i=0; i<canvas2.length; i++) {
-    console.log(canvas2[i])
+    //console.log(canvas2[i])
     var contex = canvas2[i].getContext('2d');
     canvas2[i].width=25;
     canvas2[i].height=25;
@@ -236,7 +283,7 @@ for (i=0; i<canvas2.length; i++) {
 
 //Canvas newGame//
 const canvas_newGame = document.getElementById('canvas_newGame');
-    console.log(canvas_newGame)
+    //console.log(canvas_newGame)
     var contex_newGame = canvas_newGame.getContext('2d');
     canvas_newGame.width=25;
     canvas_newGame.height=25;
@@ -252,7 +299,7 @@ const canvas_newGame = document.getElementById('canvas_newGame');
 
 //Canvas Rolld Dice//
 const canvas_rollDice = document.getElementById('canvas_rollDice');
-    console.log(canvas_rollDice)
+    //console.log(canvas_rollDice)
     var contex_rollDice = canvas_rollDice.getContext('2d');
     canvas_rollDice.width=25;
     canvas_rollDice.height=25;
@@ -286,7 +333,7 @@ const canvas_rollDice = document.getElementById('canvas_rollDice');
 
 //Canvas hold//
 const canvas_hold = document.getElementById('canvas_hold');
-    console.log(canvas_hold)
+    //console.log(canvas_hold)
     var contex_hold = canvas_hold.getContext('2d');
     canvas_hold.width=25;
     canvas_hold.height=25;
@@ -305,10 +352,11 @@ const canvas_hold = document.getElementById('canvas_hold');
     contex_hold.stroke();
     contex_hold.closePath();
 
-
+/*
 console.log('score:' + player1.score)
 console.log('round: ' + player1.round)
 player1.change_round()
 console.log('round: ' + player1.round)
 player1.hold()
 console.log('score:' + player1.score)
+*/
