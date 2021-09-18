@@ -18,7 +18,10 @@ class player {
 
         this.hold = function () { //Intégrer le lancé de dès au score total
             this.score+=this.round;
+            this.round=0;
+            document.getElementById(id_player_round).innerText = this.round;
             document.getElementById(id_player_score).innerText = this.score;
+            reset_Dice()
         }
     }
 }
@@ -26,8 +29,6 @@ class player {
 class game {
     constructor(joueur1, joueur2) {
         this.firstPlayer = joueur1;
-        //console.log(this.firstPlayer)
-        //console.log(this.firstPlayer.active)
         this.secondPlayer = joueur2;
 
     }
@@ -61,18 +62,6 @@ class game {
 let player1 = new player (0, 5, true, 'total1', 'scoreLancé1')
 let player2 = new player (0, 5, false, 'total2', 'scoreLancé2')
 let currentGame = new game (player1, player2)
-//console.log(currentGame)
-//console.log(currentGame.firstPlayer)
-//console.log(currentGame.firstPlayer.active)
-
-/*
-console.log('score:' + player1.score)
-console.log('round: ' + player1.round)
-player1.change_round()
-console.log('round: ' + player1.round)
-player1.hold()
-console.log('score:' + player1.score)
-*/
 
 //bouton pour lancer les dès
 let button_rollDice= document.getElementById('rollDice'); 
@@ -122,16 +111,20 @@ function change_Dice(){
 
 
 
-//Dice//
-/*
-const canvas = document.getElementById('dice');
-var ctx = canvas.getContext('2d');
-canvas.width=100;
-canvas.height=100;
-ctx.fillStyle = 'white';
-ctx.fillRect(0,0,canvas.width,canvas.height);
-*/
-//Dice_6()
+
+
+
+//Canvas Dice
+reset_Dice()
+function reset_Dice() {
+    let canvas = document.getElementById('dice');
+    let ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width=100;
+    canvas.height=100;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+}
 
 function Dice_1(ctx, canvas) {
     ctx.beginPath();
@@ -351,12 +344,3 @@ const canvas_hold = document.getElementById('canvas_hold');
     contex_hold.lineTo(canvas_hold.width/2+3,canvas_hold.height/2-3);
     contex_hold.stroke();
     contex_hold.closePath();
-
-/*
-console.log('score:' + player1.score)
-console.log('round: ' + player1.round)
-player1.change_round()
-console.log('round: ' + player1.round)
-player1.hold()
-console.log('score:' + player1.score)
-*/
