@@ -2,41 +2,63 @@ console.log('main.js connecté');
 
 //class pour créer des joueurs
 class player {
-    constructor(score, round, active, id_player_score, id_player_round) {
+    constructor(score, round, active, id_player_score, id_player_round, id_player_point, name) {
+        this.name= name; //nom du joueur
         this.score = score; //score total
         this.round = round; //score du tour
         this.active = active; //joueur actif ou non
-        this.change_round = function() { //Lancer les dès
-            dice=change_Dice();
-            if (dice != 1) {
-                this.round+=dice;
-            } else {
-                this.round=0;
-            }
-            document.getElementById(id_player_round).innerText = this.round;
-        }
-
-        this.hold = function () { //Intégrer le lancé de dès au score total
-            this.score+=this.round;
+        this.idScore=id_player_score; //emplacement de son global
+        this.idRound=id_player_round; //emplacement de ses lancés en cours
+        this.idPoint= id_player_point; //emplacement du point actif
+    }
+    change_round () { //Lancer les dès
+        let dice=change_Dice();
+        if (dice != 1) {
+            this.round+=dice;
+        } else {
             this.round=0;
-            document.getElementById(id_player_round).innerText = this.round;
-            document.getElementById(id_player_score).innerText = this.score;
-            reset_Dice()
+            currentGame.changePlayersStatus()
+        }
+        document.getElementById(this.idRound).innerText = this.round;
+    }
+    hold () { //Intégrer le lancé de dès au score total
+        //document.getElementById('player2Point2').classList.add('displayNone');
+        this.score+=this.round;
+        this.round=0;
+        document.getElementById(this.idRound).innerText = this.round;
+        document.getElementById(this.idScore).innerText = this.score;
+        reset_Dice()
+        currentGame.changePlayersStatus()
+        if (this.score>100){
+            alert('le ' + this.name + ' a gagné');
+            currentGame.init()
         }
     }
+    resetElements(){
+        document.getElementById(this.idRound).innerText = 0;
+        document.getElementById(this.idScore).innerText = 0;
+    }
 }
+
+
+
 
 class game {
     constructor(joueur1, joueur2) {
         this.firstPlayer = joueur1;
         this.secondPlayer = joueur2;
-
-    }
+    };
     init() {
-        this.firstPlayer = new player (0, 0, true, 'total1', 'scoreLancé1')
-        this.secondPlayer = new player (0, 0, false, 'total2', 'scoreLancé2')
-    }
-
+        this.firstPlayer.score = 0;
+        this.firstPlayer.round = 0;
+        this.firstPlayer.active = false;
+        this.secondPlayer.score=0;
+        this.secondPlayer.round=0;
+        this.secondPlayer.active=true;
+        this.changePlayersStatus();
+        this.firstPlayer.resetElements();
+        this.secondPlayer.resetElements();
+    };
     playerRollingDice() {
         if (this.firstPlayer.active) {
             this.firstPlayer.change_round();
@@ -45,8 +67,7 @@ class game {
         } else {
             alert('Error: Pas de joueur actif !');
         }
-    }
-
+    };
     playerHolding(){
         if (this.firstPlayer.active) {
             this.firstPlayer.hold();
@@ -55,21 +76,38 @@ class game {
         } else {
             alert('Error: Pas de joueur actif !');
         }
-    }
+    };
+    changePlayersStatus() {
+        if (this.firstPlayer.active) {
+            this.firstPlayer.active=false;
+            document.getElementById(this.firstPlayer.idPoint).classList.add('displayNone');
+            this.secondPlayer.active=true;
+            document.getElementById(this.secondPlayer.idPoint).classList.remove('displayNone');
+        } else {
+            this.firstPlayer.active=true;
+            document.getElementById(this.firstPlayer.idPoint).classList.remove('displayNone');
+            this.secondPlayer.active=false;
+            document.getElementById(this.secondPlayer.idPoint).classList.add('displayNone');
+        }
+    };
 }
 
 //Création des joueurs !
-let player1 = new player (0, 5, true, 'total1', 'scoreLancé1')
-let player2 = new player (0, 5, false, 'total2', 'scoreLancé2')
+let player1 = new player (0, 0, true, 'total1', 'scoreLancé1', 'player1Point1', 'player1')
+let player2 = new player (0, 0, false, 'total2', 'scoreLancé2', 'player2Point2', 'player2')
 let currentGame = new game (player1, player2)
 
 //bouton pour lancer les dès
 let button_rollDice= document.getElementById('rollDice'); 
 button_rollDice.addEventListener('click', function () {currentGame.playerRollingDice()});
 
+//bouton pour encaisser la somme des lancés de dès
 let button_hold= document.getElementById('hold'); 
 button_hold.addEventListener('click', function () {currentGame.playerHolding()});
 
+//bouton pour lancer une nouvelle partie
+let button_newGame= document.getElementById('newGame'); 
+button_newGame.addEventListener('click', function () {currentGame.init()});
 
 function change_Dice(){
     //on créée et nettoie le canvas

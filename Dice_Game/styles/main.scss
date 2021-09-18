@@ -6,6 +6,10 @@ $base-color: rgb(235, 77, 76);
     height: 100%;
 }
 
+.displayNone {
+    display:none;
+}
+
 html {
     font-family: 'Lato', sans-serif;
     display:flex;
@@ -110,10 +114,6 @@ body{
     justify-content: center;
     align-items:center;
     flex-direction:row;
-}
-
-#player1Point2 {
-    visibility: hidden;
 }
 
 #player1 {

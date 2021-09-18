@@ -7,6 +7,10 @@
   height: 100%;
 }
 
+.displayNone {
+  display: none;
+}
+
 html {
   font-family: 'Lato', sans-serif;
   display: -webkit-box;
@@ -199,10 +203,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-}
-
-#player1Point2 {
-  visibility: hidden;
 }
 
 #player1 {
